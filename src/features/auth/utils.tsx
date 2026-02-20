@@ -1,0 +1,23 @@
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
+
+export const getSession = async () => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  return session;
+};
+
+export const getUser = async () => {
+  const session = await getSession();
+  return session?.user;
+};
+
+export const getOrgs = async () => {
+  const orgs = await auth.api.listOrganizations({
+    headers: await headers(),
+  });
+
+  return orgs;
+};

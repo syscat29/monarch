@@ -1,17 +1,12 @@
 import { auth } from "@/lib/auth";
-import { Metadata } from "next";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-interface AuthProps {
+interface LayoutProps {
   children: React.ReactNode;
 }
 
-export const metadata: Metadata = {
-  title: "Forge Auth",
-};
-
-export default async function AuthLayout({ children }: Readonly<AuthProps>) {
+export default async function AuthLayout({ children }: Readonly<LayoutProps>) {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -36,7 +31,7 @@ export default async function AuthLayout({ children }: Readonly<AuthProps>) {
         </div>
       </div>
       <div className="p-8 flex flex-col">
-        <h1 className="font-bold text-lg uppercase">Forge</h1>
+        <h1 className="font-bold text-lg uppercase">Monarch</h1>
         {children}
       </div>
     </div>

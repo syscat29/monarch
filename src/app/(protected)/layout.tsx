@@ -1,14 +1,10 @@
 import { auth } from "@/lib/auth";
-import { Metadata } from "next";
 import { redirect } from "next/navigation";
+import Header from "@/components/layout/Header";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
-
-export const metadata: Metadata = {
-  title: "Forge",
-};
 
 export default function ProtectedLayout({ children }: Readonly<LayoutProps>) {
   const session = auth.api.getSession;
@@ -17,5 +13,10 @@ export default function ProtectedLayout({ children }: Readonly<LayoutProps>) {
     redirect("/auth/signin");
   }
 
-  return children;
+  return (
+    <>
+      <Header />
+      {children}
+    </>
+  );
 }

@@ -14,7 +14,7 @@ export default function SignInForm() {
     } catch (error: unknown) {
       console.log("An error has ocurred", error);
     } finally {
-      router.push("/");
+      router.replace("/");
     }
 
     // const username = data.get("username") as string;

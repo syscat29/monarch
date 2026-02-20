@@ -1,5 +1,5 @@
 import { betterAuth } from "better-auth";
-import { username } from "better-auth/plugins";
+import { organization, username } from "better-auth/plugins";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { nextCookies } from "better-auth/next-js";
 import { PrismaClient } from "@/generated/prisma/client";
@@ -13,7 +13,7 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
-  plugins: [username(), nextCookies()],
+  plugins: [username(), organization(), nextCookies()],
   advanced: {
     cookiePrefix: "forge_session",
   },

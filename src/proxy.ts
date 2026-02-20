@@ -18,6 +18,7 @@ import { getSessionCookie } from "better-auth/cookies";
 
 // Checks if a session cookie exists, redirects to signin page if it doesn't
 // NOTE: DOES NOT VALIDATE THE SESSION
+
 export async function proxy(request: NextRequest) {
   const sessionCookie = getSessionCookie(request, {
     cookiePrefix: "forge_session",
